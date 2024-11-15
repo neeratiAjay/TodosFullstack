@@ -16,7 +16,7 @@ app = express()
 
 
 const corsOptions = {
-    origin: ['http://localhost:3004', 'https://todos-z8nh.onrender.com'],
+    origin: ['http://localhost:3004', 'https://todosfrontend-rk4w.onrender.com'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define the allowed methods if necessary
     credentials: true, // Include credentials if necessary
   };
@@ -196,7 +196,7 @@ app.put("/profile", authenticateToken, async(request,response)=>{
     if (currentPasswordMatch === true){
         const updatePassword = `UPDATE user SET password ='${hashedPassword}' WHERE id = ${id}`
         await db.run(updatePassword)
-        response.json("Password updated successfully");
+        response.send("Password updated successfully");
         
        
     }else{
