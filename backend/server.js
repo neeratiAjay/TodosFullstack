@@ -16,7 +16,7 @@ app = express()
 
 
 const corsOptions = {
-    origin: ['http://localhost:3004', 'https://todosfrontend-rk4w.onrender.com'],
+    origin: ['http://localhost:3004'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define the allowed methods if necessary
     credentials: true, // Include credentials if necessary
   };
