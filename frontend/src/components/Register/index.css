@@ -1,0 +1,132 @@
+.Register-container{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 4px 4px 4px 4px #bfbfbf;
+    border: none;
+    border-radius: 12px;
+    min-width: 200px;
+    padding-bottom: 10px;
+}
+.register-heading{
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 14px;
+    color: #ea580c;
+    text-align: center;
+}
+.label{
+    color:#475569;
+    font-family: "roboto";
+    font-size: 10px;
+    font-weight: 300;
+    margin-left: 10px;
+    margin-top: 10px;
+
+}
+.input{
+    height: 25px;
+    min-width: 200px;
+    border: 1px solid #ea580c;
+    border-radius: 4px;
+    outline: none;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 1px;
+
+}
+.submit-btn{
+    height: 30px;
+    min-width: 90px;
+    font-family: "roboto";
+    background-color:#3194ef;
+    outline: none;
+    cursor: pointer;
+    border:none;
+    border-radius: 8px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 12px;
+    margin: 10px;
+    margin-bottom: 2px;
+}
+.error-text{
+    font-size: 12px;
+    font-family: "roboto";
+    font-weight: 300;
+    color: #ff0b37 ;
+    margin-top:0;
+    text-align: center;
+}
+.para{
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+}
+@media screen and (min-width:576px){
+    .register-heading{
+        font-size:32px;
+    }
+    .label{
+        font-size: 12px;
+        font-weight: 400;
+
+    }
+    .input{
+        height: 28px;
+        min-width: 280px;
+        
+    }
+    .submit-btn{
+        height: 30px;
+        min-width: 120px;
+        font-family: "roboto";
+        background-color:#3194ef;
+        outline: none;
+        cursor: pointer;
+        border:none;
+        border-radius: 12px;
+        text-align: center;
+        color: #ffffff;
+        font-size: 14px;
+    }
+
+}
+
+@media screen and(min-width:768px){
+    .register-heading{
+        font-size:40px;
+    }
+    .label{
+        font-size: 14px;
+        font-weight: 500;
+
+    }
+    .input{
+        height:33px;
+        width: 300px;
+        
+    }
+    .submit-btn{
+        height: 38px;
+        min-width: 120px;
+        font-family: "roboto";
+        background-color:#3194ef;
+        outline: none;
+        cursor: pointer;
+        border:none;
+        border-radius: 14px;
+        text-align: center;
+        color: #ffffff;
+        font-size:18px;
+    }
+
+}

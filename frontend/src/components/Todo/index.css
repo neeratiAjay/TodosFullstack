@@ -1,0 +1,159 @@
+.todo-container{
+    display: flex;
+    flex-direction: column;
+    min-width: 100vh;
+}
+.heading{
+    font-family: "roboto";
+    font-weight: 400;
+    font-size: 14px;
+    color: #ea580c;
+    text-align: center;
+    margin-top: 20px;
+}
+.input-container{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+.todo-input{
+    height: 25px;
+    width:70%;
+    outline: none;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    padding-left: 5px;
+
+}
+.todo-btn{
+    height:25px;
+    width:100px;
+    font-size:12px;
+    text-align: center;
+    background-color:#ec8f7f;
+    color: #ffffff;
+    font-weight: 400;
+    outline: none;
+    cursor: pointer;
+    margin-left: 20px;
+    border: none;
+    border-radius:8px;
+}
+.ul-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
+    list-style: none;
+    padding: 0;
+}
+
+
+.profile-container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    align-self: flex-end;
+    align-items: center;
+    justify-content: center;
+}
+.profile-text{
+    font-family: "roboto";
+    font-weight:500;
+    font-size: 12px;
+    padding-top:2px;
+    margin: 0;
+}
+.empty-task{
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 30px;
+}
+@media screen and(min-width:576px){
+    .heading{
+        font-size:24px;
+    }
+    .todo-input{
+        height: 28px;
+       
+        outline: none;
+        border: 1px solid #bfbfbf;
+        border-radius: 4px;
+    
+    }
+   
+    .todo-btn{
+        height:30px;
+        width:100px;
+        font-size:14px;
+        text-align: center;
+        background-color:#ec8f7f;
+        color: #ffffff;
+        font-weight: 400;
+    
+    }
+    .title{
+        font-size: 16px;
+    }
+    .btn-edit{
+        height:30px;
+        width: 100px;
+        font-size: 16px;
+
+    }
+    .btn-delete{
+        height:30px;
+        width: 100px;
+        font-size: 16px;
+    }
+    .profile-text{
+        font-family: "roboto";
+        font-weight:500;
+        font-size: 14px;
+    }
+    .empty-task{
+        color: #000000;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+    }
+}
+@media screen and (min-width:768px){
+   
+    .todo-btn{
+        height:35px;
+        width:100px;
+        font-size:16px;
+        text-align: center;
+        background-color:#ec8f7f;
+        color: #ffffff;
+        font-weight: 400;
+    
+    }
+   
+   
+    .heading{
+        font-size: 40px;
+    }
+    .todo-input{
+        height: 30px;
+       
+        outline: none;
+        border: 1px solid #bfbfbf;
+        border-radius: 4px;
+    
+    }
+    .profile-text{
+        font-family: "roboto";
+        font-weight:500;
+        font-size: 16px;
+    }
+    .empty-task{
+        color: #000000;
+        font-size:35px;
+        text-align: center;
+        margin-top: 30px;
+    }
+   
+}

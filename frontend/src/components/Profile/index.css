@@ -1,0 +1,223 @@
+.profile-bg-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+.profile-heading{
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-left: 20px;
+    color:#000000;
+}
+.ul-container{
+    display: flex;
+    flex-direction: column;
+    list-style-type:none;
+    margin:10px;
+    padding: 0px;
+}
+.name-text{
+    font-family:"roboto";
+    font-size: 12px;
+    font-weight:500;
+    color:#000000;
+    margin: 10px;
+}
+.span-text{
+    font-family:"roboto";
+    font-size: 12px;
+    font-weight: 400;
+    color:#555762;
+    margin-left: 10px;
+}
+.update-password-container{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.password-input{
+    outline: none;
+    border: 1px solid #bfbfbf;
+    height: 25px;
+    width: 180px;
+    outline: none;
+    padding-left: 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+}
+.password-submit-btn{
+    font-family: "roboto";
+    font-size: 12px;
+    height: 25px;
+    width: 80px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(90, 207, 207);
+    color: #ffffff;
+    text-align: center;
+    font-weight: 400;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+.label{
+    font-size: 12px;
+    font-family: "roboto";
+    font-weight: 400;
+    color: #bfbfbf;
+    padding-left:0;
+}
+.error-text{
+    font-size: 14px;
+    font-family: "roboto";
+    font-weight: 400;
+    color: #f81e1e;
+    padding-left:0;
+    align-self: flex-start;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    width: 200px;
+    height: 100px;
+    margin: 0;
+    margin-left: 10px;
+}
+.btn-logout{
+    background-color: transparent;
+    border: none;
+    font-family: "roboto";
+    font-weight: 500;
+    color: #0325e6;
+    font-size: 12px;
+    cursor: pointer;
+}
+.btn-delete{
+    background-color: transparent;
+        border: none;
+        font-family: "roboto";
+        font-weight: 500;
+        color: #f10814;
+        font-size: 12px;
+     width: 120px;
+     cursor: pointer;
+}
+@media  screen and (min-width:576px){
+    .profile-heading{
+        font-size:18px;
+    }
+    .name-text{
+        font-size: 16px;
+    }
+    .span-text{
+        font-size: 14px;
+    }
+    .password-input{
+        outline: none;
+        border: 1px solid #bfbfbf;
+        height: 30px;
+        width: 280px;
+        outline: none;
+        padding-left: 10px;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    .password-submit-btn{
+        font-size: 16px;
+        font-family: "roboto";
+        font-size: 15px;
+        height:30px;
+        width: 90px;
+        border: none;
+        border-radius: 2px;
+        background-color: rgb(90, 207, 207);
+        color: #ffffff;
+        border-radius: 8px;
+    }
+    .label{
+        font-size: 16px;
+        font-family: "roboto";
+        font-weight: 400;
+        color: #bfbfbf;
+    }
+    .btn-logout{
+        background-color: transparent;
+        border: none;
+        font-family: "roboto";
+        font-weight: 500;
+        color: #0325e6;
+        font-size: 14px;
+       
+    
+    }
+    .btn-delete{
+        background-color: transparent;
+        border: none;
+        font-family: "roboto";
+        font-weight: 500;
+        color: #f10814;
+        font-size: 14x;
+       
+    
+    }
+}
+@media  screen and (min-width:768px){
+    .profile-heading{
+        font-size:20px;
+    }
+    .name-text{
+        font-size: 18px;
+    }
+    .span-text{
+        font-size: 16px;
+    }
+    .password-input{
+        font-size:18;
+        outline: none;
+        border: 1px solid #bfbfbf;
+        height: 35px;
+        width: 300px;
+        outline: none;
+        padding-left: 10px;
+    }
+    .password-submit-btn{
+        font-family: "roboto";
+        font-size: 18px;
+        height: 35px;
+        width: 100px;
+        border: none;
+        border-radius: 2px;
+        background-color: rgb(90, 207, 207);
+        color: #ffffff;
+        border-radius: 12px;
+    }
+    .label{
+        font-size: 18px;
+        font-family: "roboto";
+        font-weight: 400;
+        color: #bfbfbf;
+    }
+    .btn-logout{
+        background-color: transparent;
+        border: none;
+        font-family: "roboto";
+        font-weight: 500;
+        color: #0325e6;
+        font-size: 16px;
+       
+    
+    }
+    .btn-delete{
+        background-color: transparent;
+        border: none;
+        font-family: "roboto";
+        font-weight: 500;
+        color: #f10814;
+        font-size: 16x;
+       
+    
+    }
+}
