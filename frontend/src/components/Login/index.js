@@ -31,6 +31,7 @@ class Login extends Component{
 
  submitData = async event =>{
     event.preventDefault()
+    try{
     const {username, password} = this.state
     const userDetails = {username:username, password:password}
     const url = "https://todosfullstack.onrender.com/login"
@@ -43,13 +44,15 @@ class Login extends Component{
     const data = await response.json()
     if (response.ok === true){
         this.onSubmitSuccess(data.jwt_token)
-        const userData = {userId:data.user_id}
-        localStorage.setItem("userId",JSON.stringify(userData))
+       
         
     }else{
     
         this.onSubmitFailure(data.err_msg)
     }
+   }catch(e){
+      console.log(`Loggin Post Api ERROR ${e.message}`)
+   }
 
  }
     render(){
