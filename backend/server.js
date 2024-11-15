@@ -14,11 +14,12 @@ app = express()
 
 
 const corsOptions = {
-    origin: 'https://todos-z8nh.onrender.com',
-    optionsSuccessStatus: 200
+    origin: ['http://localhost:3000', 'https://todos-z8nh.onrender.com'], // Add your production URL here
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define the allowed methods if necessary
+    credentials: true, // Include credentials if necessary
   };
   
-  app.use(cors(corsOptions))
+  app.use(cors(corsOptions));
 
 
   app.use(express.json())
