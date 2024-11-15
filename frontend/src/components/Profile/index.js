@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react"
 import {useNavigate} from "react-router-dom"
 import Cookies from "js-cookie"
+import {Link} from "react-router-dom"
 
 import "./index.css"
 
@@ -22,7 +23,7 @@ const Profile = ()=>{
         }else{
        
     const getUserData = async ()=>{
-        const url = "http://localhost:4000/profile"
+        const url = "https://todosfullstack.onrender.com/profile"
        
         const options = {
             method:"GET",
@@ -51,7 +52,7 @@ const Profile = ()=>{
         }
         else{
         const {id} = userDetails
-        const url = "http://localhost:4000/profile"
+        const url = "https://todosfullstack.onrender.com/profile"
         //const jwtToken = Cookies.get("jwt_token")
         const options = {
             method:"PUT",
@@ -78,7 +79,7 @@ const Profile = ()=>{
 
     const deleteAccount = async()=>{
         const {id} = userDetails
-        const url = `http://localhost:4000/profile/${id}`
+        const url = `https://todosfullstack.onrender.com/profile/${id}`
         const options = {
             method:"DELETE",
             headers:{authorization:`Bear ${jwtToken}`}
@@ -106,6 +107,7 @@ const Profile = ()=>{
     
     return (
         <div className="profile-bg-container">
+            <Link to ="/" className="back">Go Back</Link>
         <h1 className="profile-heading">Profile Details</h1>
         <ul className="ul-container">
             <li className="name-text">Name : <span className="span-text">{name}</span></li>

@@ -3,6 +3,20 @@
     flex-direction: column;
     min-height: 100vh;
 }
+.back{
+    font-size: 12px;
+    font-family: "roboto";
+    font-weight: bold;
+    text-decoration: none;
+    color:#000000;
+    margin: 10px;
+    margin-left: 20px;
+    border: 1px solid #bfbfbf;
+    border-radius: 4px;
+    text-align: center;
+    width:90px;
+    padding: 2px;
+}
 .profile-heading{
     font-size: 14px;
     font-family: 'Courier New', Courier, monospace;
@@ -163,6 +177,13 @@
        
     
     }
+    .back{
+        font-size: 15px;
+        font-family: "roboto";
+        font-weight: bold;
+        text-decoration: none;
+        color:#000000;
+    }
 }
 @media  screen and (min-width:768px){
     .profile-heading{
@@ -219,5 +240,12 @@
         font-size: 16x;
        
     
+    }
+    .back{
+        font-size:24px;
+        font-family: "roboto";
+        font-weight: bold;
+        text-decoration: none;
+        color:#000000;
     }
 }

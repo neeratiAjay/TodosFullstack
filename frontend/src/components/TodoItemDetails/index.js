@@ -22,7 +22,7 @@ const TodoItemDetails = props =>{
    const onClickSave = async ()=>{
       
       const newStatus = "Inprogress"
-      const url  = "http://localhost:4000/todos"
+      const url  = "https://todosfullstack.onrender.com/todos"
       const jwtToken = Cookies.get("jwt_token")
       const options = {
        method :"PUT",
@@ -42,7 +42,7 @@ const TodoItemDetails = props =>{
    const updateStatus = async()=>{
       setToggle((checked)=>!checked)
       const updatedStatus = status === "Inprogress"? "Completed":"Inprogress"
-      const url  = "http://localhost:4000/todos"
+      const url  = "https://todosfullstack.onrender.com/todos"
       const jwtToken = Cookies.get("jwt_token")
       const options = {
        method :"PUT",

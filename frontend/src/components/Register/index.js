@@ -28,7 +28,7 @@ class Register extends Component{
      const {name, username, email, password,confirmPassword} = this.state
      if (password === confirmPassword){
    
-     const url = "http://localhost:4000/register"
+     const url = "https://todosfullstack.onrender.com/register"
 
      const formatData = {name:name, username:username, email:email, password:password}
      const options ={

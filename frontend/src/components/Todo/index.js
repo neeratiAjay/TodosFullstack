@@ -14,7 +14,7 @@ class Todo extends Component{
         try{
         
         const jwtToken = Cookies.get("jwt_token")
-        const url = `http://localhost:4000/user/todos`
+        const url = `https://todosfullstack.onrender.com/user/todos`
         const options = {
             method:"GET",
             headers:{
@@ -50,7 +50,7 @@ class Todo extends Component{
         const {userId} = userIdData
         const todoId = uuidv4().trim().toLowerCase()
         const newTodo = {id:todoId,title:todoInput,status:"Inprogress",userId:userId}
-        const url = "http://localhost:4000/todos"
+        const url = "https://todosfullstack.onrender.com/todos"
         const jwtToken = Cookies.get("jwt_token")
         const options = {
             method: 'POST',
@@ -69,7 +69,7 @@ class Todo extends Component{
 
     deleteTodo = async id =>{
        const jwtToken = Cookies.get("jwt_token")
-       const url = `http://localhost:4000/todos/${id}`
+       const url = `https://todosfullstack.onrender.com/todos/${id}`
        const options = {
         method:"DELETE",
         headers:{
@@ -97,19 +97,15 @@ class Todo extends Component{
         }
         return (
             <div className="todo-container">
-                <div className="header-container">
-                    <div>
-                    <Link to ="/">
-                <p className="profile-text">Back</p>
-                </Link>
-                    </div>
+               
+               
                 <div className="profile-container">
                     <Link to ="/profile">
                     <FaUserCircle size={30}/>
                 <p className="profile-text"> My Profile</p>
                 </Link>
                 </div>
-                </div>
+                
                 <h1 className="heading">TODOS</h1>
                 <form className="input-container"  onSubmit={this.submitNewTodo}>
                 <input type = "text" placeholder="Enter Your Task" value={todoInput} onChange={this.onChangeTodoInput} className="todo-input"/>
