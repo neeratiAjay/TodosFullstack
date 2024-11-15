@@ -18,5 +18,8 @@
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "uuid": "^11.0.3"
-  }
+  },
+  "scripts": {
+  "postinstall": "npm install sqlite3"
+}
 }

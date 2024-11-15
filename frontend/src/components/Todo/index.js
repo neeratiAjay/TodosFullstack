@@ -97,11 +97,18 @@ class Todo extends Component{
         }
         return (
             <div className="todo-container">
+                <div className="header-container">
+                    <div>
+                    <Link to ="/">
+                <p className="profile-text">Back</p>
+                </Link>
+                    </div>
                 <div className="profile-container">
                     <Link to ="/profile">
                     <FaUserCircle size={30}/>
                 <p className="profile-text"> My Profile</p>
                 </Link>
+                </div>
                 </div>
                 <h1 className="heading">TODOS</h1>
                 <form className="input-container"  onSubmit={this.submitNewTodo}>
