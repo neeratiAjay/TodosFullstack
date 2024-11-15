@@ -23,7 +23,7 @@ app = express()
     origin: 'https://todos-z8nh.onrender.com',
 }));
   
-  app.use(cors(corsOptions));
+  //app.use(cors(corsOptions));
 
 
   app.use(express.json())
