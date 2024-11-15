@@ -14,7 +14,7 @@ app = express()
 
 
 const corsOptions = {
-    origin: 'http://localhost:3004', // Update this to the correct origin
+    origin: 'https://todos-z8nh.onrender.com',
     optionsSuccessStatus: 200
   };
   
