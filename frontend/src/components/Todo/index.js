@@ -48,10 +48,11 @@ class Todo extends Component{
         const{todoInput} = this.state
         const userIdData =JSON.parse(localStorage.getItem("userId"))
         const {userId} = userIdData
-        const todoId = uuidv4().trim().toLowerCase()
+        const todoId = uuidv4()
         const newTodo = {id:todoId,title:todoInput,status:"Inprogress",userId:userId}
         const url = "https://todosfullstack.onrender.com/todos"
         const jwtToken = Cookies.get("jwt_token")
+    
         const options = {
             method: 'POST',
             headers:{ 'Content-Type': 'application/json',authorization:`Bear ${jwtToken}`},

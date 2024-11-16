@@ -143,11 +143,14 @@ app.get("/user/todos", authenticateToken,async(request,response)=>{
 app.post("/todos",authenticateToken, async(request,response)=>{
     
     const {id,title,status,userId} = request.body
-    
+    try{
     const insertTodo = `INSERT INTO todo(id,user_id,title,status)
     VALUES ('${id}',${userId},'${title}','${status}')`
     const dbResponse = await db.run(insertTodo)
     response.send("User Inserted successfully");
+    }catch(e){
+        console.log(` Error : ${e.message}`)
+    }
     
 })
 
@@ -208,13 +211,12 @@ app.put("/profile", authenticateToken, async(request,response)=>{
 // DELETE PROFILE API 
 app.delete("/profile/:id",authenticateToken,async(request,response)=>{
     const {id} = request.params 
-    if(id!== undefined){
     const deleteUser = `DELETE FROM user WHERE id = ${id}`
     const userTodos = `DELETE FROM todo WHERE user_id = ${id}`
     await db.run(userTodos)
     await db.run(deleteUser)
     response.send("User Deleted Successfully")
-    }
+    
 })
 
 

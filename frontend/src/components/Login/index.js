@@ -51,7 +51,7 @@ class Login extends Component{
         this.onSubmitFailure(data.err_msg)
     }
    }catch(e){
-      console.log(`Loggin Post Api ERROR ${e.message}`)
+      console.log(`Login Post Api ERROR ${e.message}`)
    }
 
  }
