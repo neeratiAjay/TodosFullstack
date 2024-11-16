@@ -128,29 +128,33 @@ app.post("/login",async (request,response)=>{
 // GET USER TODOS API 
 app.get("/user/todos", authenticateToken,async(request,response)=>{
     const {username} = request
+    
     const getUserId = `SELECT id FROM user WHERE username = '${username}'`
     const responseId = await db.get(getUserId)
     let {id} = responseId
-    id = parseInt(id)
+    
     const sqlQuary = `SELECT * FROM todo WHERE user_id =${id}`
 
     const dbResponse = await db.all(sqlQuary)
+    console.log(dbResponse)
     response.send(dbResponse)
 
 })
 
 // INSERT NEW TODO POST API 
 app.post("/todos",authenticateToken, async(request,response)=>{
-    
-    const {id,title,status,userId} = request.body
-    try{
+    const {username} = request
+    const {id,title,status,} = request.body
+    const userIdQuary = `SELECT id from user WHERE username = '${username}'`
+    const userIdObj = await db.get(userIdQuary)
+    const userId = userIdObj["id"] 
+
     const insertTodo = `INSERT INTO todo(id,user_id,title,status)
     VALUES ('${id}',${userId},'${title}','${status}')`
     const dbResponse = await db.run(insertTodo)
+
     response.send("User Inserted successfully");
-    }catch(e){
-        console.log(` Error : ${e.message}`)
-    }
+    
     
 })
 

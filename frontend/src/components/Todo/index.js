@@ -15,6 +15,7 @@ class Todo extends Component{
         
         const jwtToken = Cookies.get("jwt_token")
         const url = `https://todosfullstack.onrender.com/user/todos`
+        //const url2 = "http://localhost:4000/user/todos"
         const options = {
             method:"GET",
             headers:{
@@ -51,6 +52,7 @@ class Todo extends Component{
         const todoId = uuidv4()
         const newTodo = {id:todoId,title:todoInput,status:"Inprogress",userId:userId}
         const url = "https://todosfullstack.onrender.com/todos"
+        //const url2 = "http://localhost:4000/todos"
         const jwtToken = Cookies.get("jwt_token")
     
         const options = {
@@ -91,7 +93,7 @@ class Todo extends Component{
    
 
     render(){
-        const{todoInput,todos} = this.state
+        const{todoInput,todos} = this.state 
         const jwtToken = Cookies.get("jwt_token")
         if (jwtToken === undefined){
             return <Navigate to ="/login"/>
