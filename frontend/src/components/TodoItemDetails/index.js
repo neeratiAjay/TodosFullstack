@@ -4,7 +4,8 @@ import Cookies from "js-cookie"
 import "./index.css"
 
 const TodoItemDetails = props =>{
-   const { todoItem,deleteTodo, renderTodos} = props
+
+   const { todoItem,deleteTodo,renderTodos} = props
    const {id,title,status} =  todoItem
    const [checked,setToggle] = useState(false)
    const [isEdit,toggleEdit] = useState(false)
@@ -33,8 +34,8 @@ const TodoItemDetails = props =>{
        body: JSON.stringify({id:id,title:editInput,status:newStatus})
     }
     await fetch(url,options)
-    await onClickCancel()
-    
+     await onClickCancel()
+    renderTodos()
    }
    
   
@@ -43,6 +44,7 @@ const TodoItemDetails = props =>{
       setToggle((checked)=>!checked)
       const updatedStatus = status === "Inprogress"? "Completed":"Inprogress"
       const url  = "https://todosfullstack.onrender.com/todos"
+      //const url = "http://localhost:4000/todos"
       const jwtToken = Cookies.get("jwt_token")
       const options = {
        method :"PUT",
@@ -53,7 +55,7 @@ const TodoItemDetails = props =>{
        body: JSON.stringify({id:id,title:title,status:updatedStatus})
     }
     await fetch(url,options)
-    renderTodos()
+    
   }
 
   useEffect(()=>{

@@ -24,7 +24,7 @@ const Profile = ()=>{
        
     const getUserData = async ()=>{
         const url = "https://todosfullstack.onrender.com/profile"
-       
+        //const url = "http://localhost:4000/profile"
         const options = {
             method:"GET",
             headers:{
@@ -53,6 +53,7 @@ const Profile = ()=>{
         else{
         const {id} = userDetails
         const url = "https://todosfullstack.onrender.com/profile"
+        //const url = "http://localhost:4000/profile"
         //const jwtToken = Cookies.get("jwt_token")
         const options = {
             method:"PUT",

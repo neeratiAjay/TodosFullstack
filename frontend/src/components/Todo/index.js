@@ -14,8 +14,8 @@ class Todo extends Component{
         try{
         
         const jwtToken = Cookies.get("jwt_token")
-        const url = `https://todosfullstack.onrender.com/user/todos`
-        //const url2 = "http://localhost:4000/user/todos"
+        const url = `https://todosfullstack.onrender.com/todos`
+        //const url = "http://localhost:4000/todos"
         const options = {
             method:"GET",
             headers:{
@@ -50,9 +50,9 @@ class Todo extends Component{
         const userIdData =JSON.parse(localStorage.getItem("userId"))
         const {userId} = userIdData
         const todoId = uuidv4()
-        const newTodo = {id:todoId,title:todoInput,status:"Inprogress",userId:userId}
+        const newTodo = {todoId:todoId,title:todoInput,status:"Inprogress",userId:userId}
         const url = "https://todosfullstack.onrender.com/todos"
-        //const url2 = "http://localhost:4000/todos"
+        //const url = "http://localhost:4000/todos"
         const jwtToken = Cookies.get("jwt_token")
     
         const options = {
@@ -60,19 +60,26 @@ class Todo extends Component{
             headers:{ 'Content-Type': 'application/json',authorization:`Bear ${jwtToken}`},
             body: JSON.stringify(newTodo),
           }
-        if(todoInput !== ""){
+        if(todoInput.trim().length !== 0){
         
-         await fetch(url,options)
-        this.setState({todoInput:""})
-        }
+         const response = await fetch(url,options)
+        
+        const data = await response.json()
+        const {todo} = data
+        
+        this.setState((prev)=>({
+            todos:[...prev.todos,todo],
+            todoInput:""
+        }))
        
-        this.getTodosData()
+    }
 
     }
 
     deleteTodo = async id =>{
        const jwtToken = Cookies.get("jwt_token")
        const url = `https://todosfullstack.onrender.com/todos/${id}`
+       //const url =  `http://localhost:4000/todos/${id}`
        const options = {
         method:"DELETE",
         headers:{
@@ -80,8 +87,13 @@ class Todo extends Component{
       'Content-Type': 'application/json',
         }
        }
-       await fetch(url,options)
-       this.getTodosData()
+       const response = await fetch(url,options)
+       
+       if (response.ok === true){
+        const {todos} = this.state
+        const filteredData = todos.filter(eachTodo =>eachTodo.id !== id)
+        this.setState({todos:filteredData})
+       }
        
     }
    
@@ -94,6 +106,7 @@ class Todo extends Component{
 
     render(){
         const{todoInput,todos} = this.state 
+        
         const jwtToken = Cookies.get("jwt_token")
         if (jwtToken === undefined){
             return <Navigate to ="/login"/>
@@ -115,8 +128,8 @@ class Todo extends Component{
                 <button type = "submit" className="todo-btn">Create Task</button>
                 </form>
                 { todos.length>0?<ul className="ul-container">
-                 {todos.map(eachTodo=><TodoItemDetails todoItem = {eachTodo} 
-                 key = {eachTodo.id} deleteTodo = {this.deleteTodo}
+                 {todos.map((eachTodo,index)=><TodoItemDetails todoItem = {eachTodo} 
+                 key ={index} deleteTodo = {this.deleteTodo}
                  renderTodos={this.getTodosData}/>)}
                 </ul> :<h1 className="empty-task">Your Task List is Empty Create Task</h1>}
             </div>

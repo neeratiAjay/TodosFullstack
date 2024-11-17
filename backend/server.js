@@ -66,6 +66,7 @@ const authenticateToken = (request,response,next) =>{
                 response.send("Invalid Jwt Token")
             }else{
                 request.username = payload.username;
+                request.userId = payload.userId;
                 next()
             }
         })
@@ -101,9 +102,8 @@ app.post("/register", async(request,response)=>{
 })
 
 // LOGIN API 
-app.post("/login",async (request,response)=>{
+app.post("/user/login",async (request,response)=>{
     const {username, password} = request.body
-    
     const userQuary = `SELECT * FROM user WHERE username = '${username}'`
     const dbUser = await db.get(userQuary)
     if (dbUser === undefined){
@@ -112,7 +112,7 @@ app.post("/login",async (request,response)=>{
     }else{
         const isPasswordMatch = await bcrypt.compare(password,dbUser.password)
         if(isPasswordMatch === true){
-           const payload = {username : username}
+           const payload = {username : username,userId:dbUser.id}
            const jwtToken = jwt.sign(payload, "MY_SECRET_TOKEN")
            response.send({user_id:dbUser.id,jwt_token:jwtToken})
            
@@ -120,13 +120,14 @@ app.post("/login",async (request,response)=>{
          response.status(400)
          response.send({err_msg:"Invalid Password"})
         }
- 
+    
     }
+
 
 });
 
 // GET USER TODOS API 
-app.get("/user/todos", authenticateToken,async(request,response)=>{
+app.get("/todos", authenticateToken,async(request,response)=>{
     const {username} = request
     
     const getUserId = `SELECT id FROM user WHERE username = '${username}'`
@@ -136,25 +137,25 @@ app.get("/user/todos", authenticateToken,async(request,response)=>{
     const sqlQuary = `SELECT * FROM todo WHERE user_id =${id}`
 
     const dbResponse = await db.all(sqlQuary)
-    console.log(dbResponse)
     response.send(dbResponse)
 
 })
 
 // INSERT NEW TODO POST API 
 app.post("/todos",authenticateToken, async(request,response)=>{
-    const {username} = request
-    const {id,title,status,} = request.body
-    const userIdQuary = `SELECT id from user WHERE username = '${username}'`
-    const userIdObj = await db.get(userIdQuary)
-    const userId = userIdObj["id"] 
-
-    const insertTodo = `INSERT INTO todo(id,user_id,title,status)
-    VALUES ('${id}',${userId},'${title}','${status}')`
-    const dbResponse = await db.run(insertTodo)
-
-    response.send("User Inserted successfully");
     
+    const {todoId,title,status,} = request.body
+    const {userId} = request
+    try{
+    const insertQuary = ` INSERT INTO todo (id,user_id,title,status)
+    VALUES(?,?,?,?)`
+     await db.run(insertQuary,[todoId,userId,title,status])
+    response.send({ message: "Todo Inserted Successfully", todo: { todoId, title, status } });
+    }catch(e){
+        response.status(500)
+        response.send({ err_msg: "Internal Server Error" })
+       
+    }
     
 })
 
@@ -172,11 +173,14 @@ app.delete("/todos/:id", authenticateToken,async(request,response)=>{
     
     const {id} = request.params
     
-    
+    try{
     const deleteQuery = `DELETE FROM todo WHERE id = ?`;
     await db.run(deleteQuery,[id])
-    response.send("Quary Deleted Successfully")
-       
+    response.send("Todo Deleted Successfully")
+    }catch(error){
+        response.status(500)
+        response.send({err_msg:"Server Error"})
+    }
    
 });
 
