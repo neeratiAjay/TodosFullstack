@@ -15,13 +15,11 @@ app = express()
 
 
 
-const corsOptions = {
-    origin: ['https://todosfrontend-wu9i.onrender.com'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Define the allowed methods if necessary
-    credentials: true, // Include credentials if necessary
-  };
-  
-  app.use(cors(corsOptions));
+app.use(cors({
+    origin: 'https://todosfrontend-wu9i.onrender.com', // Replace with your frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allowed headers
+  }));
   
   
 
