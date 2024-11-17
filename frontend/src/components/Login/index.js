@@ -34,14 +34,14 @@ class Login extends Component{
     try{
     const {username, password} = this.state
     const userDetails = {username:username, password:password}
-    //const url = "https://todosfullstack.onrender.com/user/login"
-    const url2 = "http://localhost:4000/user/login"
+    const url = "https://todosfullstack.onrender.com/user/login"
+    //const url = "http://localhost:4000/user/login"
     const options = {
       method: 'POST',
       headers:{ 'Content-Type': 'application/json'},
       body: JSON.stringify(userDetails),
     }
-    const response = await fetch(url2, options)
+    const response = await fetch(url, options)
     const data = await response.json()
     if (response.ok === true){
         this.onSubmitSuccess(data.jwt_token)
