@@ -47,10 +47,8 @@ class Todo extends Component{
     submitNewTodo = async(event) =>{
         event.preventDefault()
         const{todoInput} = this.state
-        const userIdData =JSON.parse(localStorage.getItem("userId"))
-        const {userId} = userIdData
         const todoId = uuidv4()
-        const newTodo = {todoId:todoId,title:todoInput,status:"Inprogress",userId:userId}
+        const newTodo = {todoId:todoId,title:todoInput,status:"Inprogress"}
         const url = "https://todosfullstack.onrender.com/todos"
         //const url = "http://localhost:4000/todos"
         const jwtToken = Cookies.get("jwt_token")
