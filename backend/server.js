@@ -143,14 +143,17 @@ app.get("/todos", authenticateToken,async(request,response)=>{
 
 // INSERT NEW TODO POST API 
 app.post("/todos",authenticateToken, async(request,response)=>{
-    
+    const {username} = request
     const {todoId,title,status,} = request.body
-    const {userId} = request
+    
     try{
+        const userQuary = `SELECT id FROM user WHERE username = '${username}'`
+        const userObj = await db.get(userQuary)
+        const {id} = userObj
     const insertQuary = ` INSERT INTO todo (id,user_id,title,status)
     VALUES(?,?,?,?)`
      await db.run(insertQuary,[todoId,userId,title,status])
-    response.send({ message: "Todo Inserted Successfully", todo: { todoId, title, status } });
+    response.send({ message: "Todo Inserted Successfully", todo: {id, title, status } });
     }catch(e){
         response.status(500)
         response.send({ err_msg: "Internal Server Error" })
