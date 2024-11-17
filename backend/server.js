@@ -152,7 +152,7 @@ app.post("/todos",authenticateToken, async(request,response)=>{
         const {id} = userObj
     const insertQuary = ` INSERT INTO todo (id,user_id,title,status)
     VALUES(?,?,?,?)`
-     await db.run(insertQuary,[todoId,userId,title,status])
+     await db.run(insertQuary,[todoId,id,title,status])
     response.send({ message: "Todo Inserted Successfully", todo: {id, title, status } });
     }catch(e){
         response.status(500)
